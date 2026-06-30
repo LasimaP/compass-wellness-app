@@ -33,5 +33,4 @@ public class Habit {
     @Column(name = "created_date")
     private LocalDate createdDate;
 
-
 }
