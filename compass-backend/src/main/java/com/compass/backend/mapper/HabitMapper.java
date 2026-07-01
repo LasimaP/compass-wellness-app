@@ -12,33 +12,33 @@ import java.util.stream.Collectors;
 public class HabitMapper {
 
     // RequestDto -> Entity (for CREATE)
-    public Habit mapToHabit(HabitRequestDto dto) {
+    public Habit mapToHabit(HabitRequestDto requestDto) {
         Habit habit = new Habit();
-        habit.setName(dto.getName());
-        habit.setDescription(dto.getDescription());
-        habit.setActive(dto.isActive());
+        habit.setName(requestDto.getName());
+        habit.setDescription(requestDto.getDescription());
+        habit.setActive(requestDto.isActive());
 
         return habit;
     }
 
     // Entity -> ResponseDto (for returning data)
     public HabitResponseDto mapToHabitResponseDto(Habit habit) {
-        HabitResponseDto dto = new HabitResponseDto();
+        HabitResponseDto responseDto = new HabitResponseDto();
 
-        dto.setId(habit.getId());
-        dto.setName(habit.getName());
-        dto.setDescription(habit.getDescription());
-        dto.setActive(habit.isActive());
-        dto.setCreatedDate(habit.getCreatedDate());
+        responseDto.setId(habit.getId());
+        responseDto.setName(habit.getName());
+        responseDto.setDescription(habit.getDescription());
+        responseDto.setActive(habit.isActive());
+        responseDto.setCreatedDate(habit.getCreatedDate());
 
-        return dto;
+        return responseDto;
     }
 
     // RequestDto -> existing Entity (for UPDATE)
-    public void updateHabitFromDto(HabitRequestDto dto, Habit habit) {
-        habit.setName(dto.getName());
-        habit.setDescription(dto.getDescription());
-        habit.setActive(dto.isActive());
+    public void updateHabitFromDto(HabitRequestDto requestDto, Habit habit) {
+        habit.setName(requestDto.getName());
+        habit.setDescription(requestDto.getDescription());
+        habit.setActive(requestDto.isActive());
     }
 
     // List of entities -> List of ResponseDtos
