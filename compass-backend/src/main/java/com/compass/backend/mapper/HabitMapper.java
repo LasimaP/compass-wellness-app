@@ -5,6 +5,7 @@ import com.compass.backend.dto.HabitResponseDto;
 import com.compass.backend.entitiy.Habit;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ public class HabitMapper {
         habit.setName(requestDto.getName());
         habit.setDescription(requestDto.getDescription());
         habit.setActive(requestDto.isActive());
+        habit.setCreatedDate(LocalDate.now());
 
         return habit;
     }

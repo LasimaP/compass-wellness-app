@@ -2,6 +2,7 @@ package com.compass.backend.service;
 
 import com.compass.backend.dto.HabitRequestDto;
 import com.compass.backend.dto.HabitResponseDto;
+import com.compass.backend.entitiy.Habit;
 import com.compass.backend.mapper.HabitMapper;
 import com.compass.backend.repository.HabitRepository;
 import lombok.AllArgsConstructor;
@@ -18,7 +19,10 @@ public class HabitServiceImpl implements HabitService {
 
     @Override
     public HabitResponseDto createHabit(HabitRequestDto requestDto) {
-        return null;
+        Habit habit = habitMapper.mapToHabit(requestDto);
+        Habit savedHabit = habitRepository.save(habit);
+
+        return habitMapper.mapToHabitResponseDto(savedHabit);
     }
 
     @Override
