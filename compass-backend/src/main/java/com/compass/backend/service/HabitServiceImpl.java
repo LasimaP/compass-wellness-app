@@ -3,6 +3,7 @@ package com.compass.backend.service;
 import com.compass.backend.dto.HabitRequestDto;
 import com.compass.backend.dto.HabitResponseDto;
 import com.compass.backend.entitiy.Habit;
+import com.compass.backend.exception.ResourceNotFoundException;
 import com.compass.backend.mapper.HabitMapper;
 import com.compass.backend.repository.HabitRepository;
 import lombok.AllArgsConstructor;
@@ -27,7 +28,10 @@ public class HabitServiceImpl implements HabitService {
 
     @Override
     public HabitResponseDto getHabitById(Long habitId) {
-        return null;
+        Habit habit = habitRepository.findById(habitId).orElseThrow(() ->
+                new ResourceNotFoundException("Habit does not exist with given id : " + habitId));
+
+        return habitMapper.mapToHabitResponseDto(habit);
     }
 
     @Override
