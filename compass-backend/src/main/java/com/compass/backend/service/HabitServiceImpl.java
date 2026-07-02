@@ -19,8 +19,8 @@ public class HabitServiceImpl implements HabitService {
     private final HabitMapper habitMapper;
 
     @Override
-    public HabitResponseDto createHabit(HabitRequestDto requestDto) {
-        Habit habit = habitMapper.mapToHabit(requestDto);
+    public HabitResponseDto createHabit(HabitRequestDto request) {
+        Habit habit = habitMapper.mapToHabit(request);
         Habit savedHabit = habitRepository.save(habit);
 
         return habitMapper.mapToHabitResponseDto(savedHabit);
@@ -36,16 +36,27 @@ public class HabitServiceImpl implements HabitService {
 
     @Override
     public List<HabitResponseDto> getAllHabits() {
-        return List.of();
+        List<Habit> habits = habitRepository.findAll();
+        return habitMapper.mapToHabitResponseDtoList(habits);
     }
 
     @Override
-    public HabitResponseDto updateHabit(Long habitId, HabitRequestDto requestDto) {
-        return null;
+    public HabitResponseDto updateHabit(Long habitId, HabitRequestDto request) {
+        Habit habit = habitRepository.findById(habitId).orElseThrow(() ->
+                new ResourceNotFoundException("Habit does not exist with given id : " + habitId));
+
+        habitMapper.updateHabitFromDto(request, habit);
+
+        Habit updatedHabit = habitRepository.save(habit);
+
+        return habitMapper.mapToHabitResponseDto(updatedHabit);
     }
 
     @Override
     public void deleteHabit(Long habitId) {
+        habitRepository.findById(habitId).orElseThrow(() ->
+                new ResourceNotFoundException("Habit does not exist with given id : " + habitId));
 
+        habitRepository.deleteById(habitId);
     }
 }

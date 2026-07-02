@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 public class HabitMapper {
 
     // RequestDto -> Entity (for CREATE)
-    public Habit mapToHabit(HabitRequestDto requestDto) {
+    public Habit mapToHabit(HabitRequestDto request) {
         Habit habit = new Habit();
-        habit.setName(requestDto.getName());
-        habit.setDescription(requestDto.getDescription());
-        habit.setActive(requestDto.isActive());
+        habit.setName(request.getName());
+        habit.setDescription(request.getDescription());
+        habit.setActive(request.isActive());
         habit.setCreatedDate(LocalDate.now());
 
         return habit;
@@ -25,22 +25,23 @@ public class HabitMapper {
 
     // Entity -> ResponseDto (for returning data)
     public HabitResponseDto mapToHabitResponseDto(Habit habit) {
-        HabitResponseDto responseDto = new HabitResponseDto();
+        HabitResponseDto response = new HabitResponseDto();
 
-        responseDto.setId(habit.getId());
-        responseDto.setName(habit.getName());
-        responseDto.setDescription(habit.getDescription());
-        responseDto.setActive(habit.isActive());
-        responseDto.setCreatedDate(habit.getCreatedDate());
+        response.setId(habit.getId());
+        response.setName(habit.getName());
+        response.setDescription(habit.getDescription());
+        response.setActive(habit.isActive());
+        response.setCreatedDate(habit.getCreatedDate());
 
-        return responseDto;
+        return response;
     }
 
     // RequestDto -> existing Entity (for UPDATE)
-    public void updateHabitFromDto(HabitRequestDto requestDto, Habit habit) {
-        habit.setName(requestDto.getName());
-        habit.setDescription(requestDto.getDescription());
-        habit.setActive(requestDto.isActive());
+    public void updateHabitFromDto(HabitRequestDto request, Habit habit) {
+        habit.setName(request.getName());
+        habit.setDescription(request.getDescription());
+        habit.setActive(request.isActive());
+        habit.setCreatedDate(LocalDate.now());
     }
 
     // List of entities -> List of ResponseDtos

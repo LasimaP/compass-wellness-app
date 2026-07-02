@@ -6,13 +6,13 @@ import com.compass.backend.dto.HabitResponseDto;
 import java.util.List;
 
 public interface HabitService {
-    HabitResponseDto createHabit(HabitRequestDto requestDto);
+    HabitResponseDto createHabit(HabitRequestDto request);
 
     HabitResponseDto getHabitById(Long habitId);
 
     List<HabitResponseDto> getAllHabits();
 
-    HabitResponseDto updateHabit(Long habitId, HabitRequestDto requestDto);
+    HabitResponseDto updateHabit(Long habitId, HabitRequestDto request);
 
     void deleteHabit(Long habitId);
 
