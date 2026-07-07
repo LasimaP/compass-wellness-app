@@ -43,7 +43,7 @@ const ListHabitComponent = () => {
               <td>{habit.id}</td>
               <td>{habit.name}</td>
               <td>{habit.description}</td>
-              <td>{habit.active}</td>
+              <td>{habit.active.toString()}</td>
               <td>{habit.createdDate}</td>
             </tr>
           ))}
