@@ -11,18 +11,56 @@ const HabitComponent = () => {
   const descriptionId = useId();
   const activeId = useId();
 
+  const [errors, setErrors] = useState({
+    name: "",
+    description: "",
+  });
+
   const navigator = useNavigate();
 
   function saveHabit(e) {
     e.preventDefault();
 
-    const habit = { name, description, active };
-    console.log(habit);
+    if (validateForm()) {
+      const habit = { name, description, active };
+      console.log(habit);
 
-    createHabit(habit).then((response) => {
-      console.log(response.data);
-      navigator("/habits");
-    });
+      createHabit(habit)
+        .then((response) => {
+          console.log(response.data);
+          navigator("/habits");
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+  }
+
+  function validateForm() {
+    let valid = true;
+    const errorsCopy = { ...errors };
+
+    if (name.trim()) {
+      errorsCopy.name = "";
+    } else {
+      errorsCopy.name = "Name is required";
+      valid = false;
+    }
+
+    if (description.trim()) {
+      errorsCopy.description = "";
+    } else {
+      errorsCopy.description = "Description is required";
+      valid = false;
+    }
+
+    setErrors(errorsCopy);
+
+    return valid;
+  }
+
+  function goBack() {
+    navigator("/habits");
   }
 
   return (
@@ -40,13 +78,19 @@ const HabitComponent = () => {
                 </label>
                 <input
                   type="text"
-                  className="form-control"
                   id={nameId}
                   placeholder="Enter a Habit Name"
                   name="name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  className={`form-control ${errors.name ? "is-invalid" : ""}`}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    if (errors.name) setErrors({ ...errors, name: "" });
+                  }}
                 ></input>
+                {errors.name && (
+                  <div className="invalid-feedback">{errors.name}</div>
+                )}
               </div>
               <div className="mb-3">
                 <label htmlFor={descriptionId} className="form-label">
@@ -54,13 +98,20 @@ const HabitComponent = () => {
                 </label>
                 <input
                   type="text"
-                  className="form-control"
                   id={descriptionId}
                   placeholder="Enter Habit Description"
                   name="description"
                   value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  className={`form-control ${errors.description ? "is-invalid" : ""}`}
+                  onChange={(e) => {
+                    setDescription(e.target.value);
+                    if (errors.description)
+                      setErrors({ ...errors, description: "" });
+                  }}
                 ></input>
+                {errors.description && (
+                  <div className="invalid-feedback">{errors.description}</div>
+                )}
               </div>
               <div className="mb-3 form-check">
                 <label htmlFor={activeId} className="form-check-label">
@@ -76,6 +127,13 @@ const HabitComponent = () => {
               </div>
               <button type="submit" className="btn btn-success">
                 Submit
+              </button>
+              <button
+                type="button"
+                className="ms-2 btn btn-danger"
+                onClick={goBack}
+              >
+                Cancel
               </button>
             </form>
           </div>
