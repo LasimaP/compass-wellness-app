@@ -1,6 +1,12 @@
 import React from "react";
 
-const Button = ({ variant = "primary", href, children, ...rest }) => {
+const Button = ({
+  variant = "primary",
+  href,
+  children,
+  className = "",
+  ...rest
+}) => {
   const Component = href ? "a" : "button";
   const variantStyles = {
     primary: "bg-clay text-linen hover:bg-clay-dark",
@@ -9,7 +15,7 @@ const Button = ({ variant = "primary", href, children, ...rest }) => {
   return (
     <Component
       href={href}
-      className={`inline-flex items-center gap-2 rounded-[3px] px-[22px] py-3 font-body font-semibold text-sm ${variantStyles[variant]} transition-all duration-300`}
+      className={`inline-flex items-center gap-2 rounded-[3px] px-[22px] py-3 font-body font-semibold text-sm ${variantStyles[variant]} ${className} transition-all duration-300`}
       {...rest}
     >
       {children}
