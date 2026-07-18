@@ -14,7 +14,23 @@
   --font-body: "Karla", sans-serif;
   --font-mono: "Space Mono", monospace;
 }
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(
+    circle at 1px 1px,
+    rgba(91, 70, 54, 0.06) 1px,
+    transparent 0
+  );
+  background-size: 3px 3px;
+  z-index: 1;
 }

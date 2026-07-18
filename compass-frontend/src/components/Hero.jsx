@@ -1,9 +1,10 @@
 import React from "react";
 import Button from "./Button";
+import GrowthIllustration from "./GrowthIllustration";
 
 const Hero = () => {
   return (
-    <header className="grid md:grid-cols-2 pt-24 pb-16 gap-14">
+    <header className="max-w-[1120px] mx-auto px-10 grid md:grid-cols-2 pt-24 pb-16 gap-14">
       <div className="flex flex-col gap-8">
         <p className="flex items-center gap-2.5 uppercase text-sm text-sage font-mono tracking-wider before:content-[''] before:w-[22px] before:h-px before:bg-sage">
           A quieter kind of self-care
@@ -29,8 +30,8 @@ const Hero = () => {
           no streak-shaming · no data selling · just yours
         </p>
       </div>
-      <div className="border">
-        <p>picture</p>
+      <div className="">
+        <GrowthIllustration />
       </div>
     </header>
   );
