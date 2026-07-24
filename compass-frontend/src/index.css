@@ -34,3 +34,7 @@ body::before {
   background-size: 3px 3px;
   z-index: 1;
 }
+
+html {
+  scroll-behavior: smooth;
+}
