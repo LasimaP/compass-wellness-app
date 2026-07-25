@@ -95,12 +95,12 @@ const FeatureBeds = () => {
       id="beds"
       className="max-w-[1120px] mx-auto px-10 py-20 flex flex-col gap-10 relative z-2"
     >
-      <div className="flex flex-col gap-5 max-w-[26rem]">
+      <div className="flex flex-col gap-5 max-w-[30rem]">
         <p className="flex items-center gap-2.5 uppercase text-sm text-sage font-mono tracking-wider before:content-[''] before:w-[22px] before:h-px before:bg-sage">
           Three plots, one garden
         </p>
-        <h2 className="font-display font-medium text-moss text-3xl">
-          Everything stays connected - nothing feels like homework.
+        <h2 className="font-display font-medium text-moss text-[clamp(1.8rem,2.6vw,2rem)]">
+          Everything stays connected — nothing feels like homework.
         </h2>
         <p className="font-body text-bark">
           Habits, mood, and journaling aren't separate apps bolted together.

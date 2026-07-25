@@ -9,7 +9,7 @@ const Hero = () => {
         <p className="flex items-center gap-2.5 uppercase text-sm text-sage font-mono tracking-wider before:content-[''] before:w-[22px] before:h-px before:bg-sage">
           A quieter kind of self-care
         </p>
-        <h1 className="font-display font-medium text-5xl text-moss leading-tight">
+        <h1 className="font-display font-medium text-[clamp(2.4rem,5vw,3.6rem)] text-moss leading-tight">
           Small roots, <br />
           <em className="text-clay">steady</em> growth.
         </h1>
