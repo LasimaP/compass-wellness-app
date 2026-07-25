@@ -3,7 +3,7 @@ import Button from "./Button";
 
 const Navbar = () => {
   return (
-    <nav className="bg-parchment/80 backdrop-blur-md border-b border-bark/20 sticky top-0 z-2">
+    <nav className="bg-parchment/80 backdrop-blur-md border-b border-bark/20 sticky top-0 z-10">
       <div className="max-w-[1120px] mx-auto px-10 py-5 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <svg

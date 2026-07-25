@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import FooterComponent from "../components/FooterComponent";
 import FeatureBeds from "../components/FeatureBeds";
+import StreakTimeline from "../components/StreakTimeline";
 
 const HomePage = () => {
   return (
@@ -12,6 +13,7 @@ const HomePage = () => {
         <Navbar />
         <Hero />
         <FeatureBeds />
+        <StreakTimeline />
       </div>
     </>
   );
