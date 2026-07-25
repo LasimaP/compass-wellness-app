@@ -5,6 +5,7 @@ import Hero from "../components/Hero";
 import FooterComponent from "../components/FooterComponent";
 import FeatureBeds from "../components/FeatureBeds";
 import StreakTimeline from "../components/StreakTimeline";
+import Philosophy from "../components/Philosophy";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
         <Hero />
         <FeatureBeds />
         <StreakTimeline />
+        <Philosophy />
       </div>
     </>
   );
