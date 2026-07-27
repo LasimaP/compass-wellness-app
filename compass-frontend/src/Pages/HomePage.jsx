@@ -6,6 +6,7 @@ import FooterComponent from "../components/FooterComponent";
 import FeatureBeds from "../components/FeatureBeds";
 import StreakTimeline from "../components/StreakTimeline";
 import Philosophy from "../components/Philosophy";
+import CtaBand from "../components/CtaBand";
 
 const HomePage = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage = () => {
         <FeatureBeds />
         <StreakTimeline />
         <Philosophy />
+        <CtaBand />
       </div>
     </>
   );
