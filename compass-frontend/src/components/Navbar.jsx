@@ -28,7 +28,7 @@ const Navbar = () => {
             Understory
           </h1>
         </div>
-        <div className="flex gap-7 text-bark font-body text-body">
+        <div className="flex gap-7 text-bark text-sm font-body text-body">
           <a href="#beds" className="hover:text-clay-dark">
             How it works
           </a>
