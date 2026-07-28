@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "motion/react";
 
 const circleStyles = {
   completed: { fill: "#8A9A80" },
@@ -11,8 +12,19 @@ const circleStyles = {
   milestone: { fill: "#A8623F" },
 };
 
-const Circle = ({ cx, cy, r, type }) => {
-  return <circle cx={cx} cy={cy} r={r} {...circleStyles[type]} />;
+const Circle = ({ cx, cy, r, type, delay }) => {
+  return (
+    <motion.circle
+      cx={cx}
+      cy={cy}
+      r={r}
+      {...circleStyles[type]}
+      initial={{ opacity: 0, scale: 0 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ delay: delay, duration: 0.4 }}
+    />
+  );
 };
 
 export default Circle;
