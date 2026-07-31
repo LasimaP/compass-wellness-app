@@ -48,7 +48,6 @@ public class HabitMapper {
     public void updateHabitFromDto(HabitRequestDto request, Habit habit) {
         habit.setName(request.getName());
         habit.setDescription(request.getDescription());
-        habit.setActive(request.isActive());
         applyCadence(habit, request);
     }
 

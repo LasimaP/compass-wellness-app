@@ -2,6 +2,7 @@ package com.compass.backend.controller;
 
 import com.compass.backend.dto.HabitRequestDto;
 import com.compass.backend.dto.HabitResponseDto;
+import com.compass.backend.dto.HabitStatusDto;
 import com.compass.backend.service.HabitService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -44,6 +45,14 @@ public class HabitController {
     public ResponseEntity<HabitResponseDto> updateHabitById(@PathVariable("id") Long habitId,
                                                             @Valid @RequestBody HabitRequestDto request) {
         HabitResponseDto response = habitService.updateHabit(habitId, request);
+
+        return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<HabitResponseDto> updateStatusById(@PathVariable("id") Long habitId,
+                                                             @Valid @RequestBody HabitStatusDto status) {
+        HabitResponseDto response = habitService.updateStatus(habitId, status);
 
         return ResponseEntity.ok(response);
     }

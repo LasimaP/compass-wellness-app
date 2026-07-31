@@ -2,6 +2,7 @@ package com.compass.backend.service;
 
 import com.compass.backend.dto.HabitRequestDto;
 import com.compass.backend.dto.HabitResponseDto;
+import com.compass.backend.dto.HabitStatusDto;
 import com.compass.backend.entity.Habit;
 import com.compass.backend.exception.ResourceNotFoundException;
 import com.compass.backend.mapper.HabitMapper;
@@ -50,6 +51,17 @@ public class HabitServiceImpl implements HabitService {
         Habit updatedHabit = habitRepository.save(habit);
 
         return habitMapper.mapToHabitResponseDto(updatedHabit);
+    }
+
+    @Override
+    public HabitResponseDto updateStatus(Long habitId, HabitStatusDto status) {
+        Habit habit = habitRepository.findById(habitId).orElseThrow(() ->
+                new ResourceNotFoundException("Habit does not exist with given id : " + habitId));
+
+        habit.setActive(status.getActive());
+
+        Habit patchedHabit = habitRepository.save(habit);
+        return habitMapper.mapToHabitResponseDto(patchedHabit);
     }
 
     @Override

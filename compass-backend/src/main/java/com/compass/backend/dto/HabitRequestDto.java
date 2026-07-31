@@ -19,7 +19,6 @@ public class HabitRequestDto {
     @NotBlank(message = "name cannot be blank")
     private String name;
     private String description;
-    private boolean active;
     @NotNull
     private Frequency frequency;
     @NotNull
