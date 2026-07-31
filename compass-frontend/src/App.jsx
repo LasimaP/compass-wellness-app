@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HabitComponent from "./components/HabitComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
-import HomePage from "./Pages/HomePage";
+import HomePage from "./pages/home/HomePage";
 
 function App() {
   return (
