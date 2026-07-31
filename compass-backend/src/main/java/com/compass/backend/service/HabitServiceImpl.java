@@ -2,7 +2,7 @@ package com.compass.backend.service;
 
 import com.compass.backend.dto.HabitRequestDto;
 import com.compass.backend.dto.HabitResponseDto;
-import com.compass.backend.entitiy.Habit;
+import com.compass.backend.entity.Habit;
 import com.compass.backend.exception.ResourceNotFoundException;
 import com.compass.backend.mapper.HabitMapper;
 import com.compass.backend.repository.HabitRepository;

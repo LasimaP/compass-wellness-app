@@ -3,6 +3,7 @@ package com.compass.backend.controller;
 import com.compass.backend.dto.HabitRequestDto;
 import com.compass.backend.dto.HabitResponseDto;
 import com.compass.backend.service.HabitService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class HabitController {
     private final HabitService habitService;
 
     @PostMapping
-    public ResponseEntity<HabitResponseDto> createHabit(@RequestBody HabitRequestDto request) {
+    public ResponseEntity<HabitResponseDto> createHabit(@Valid @RequestBody HabitRequestDto request) {
         HabitResponseDto response = habitService.createHabit(request);
 
         return new ResponseEntity<>(response, HttpStatus.CREATED);
@@ -41,7 +42,7 @@ public class HabitController {
 
     @PutMapping("{id}")
     public ResponseEntity<HabitResponseDto> updateHabitById(@PathVariable("id") Long habitId,
-                                                            @RequestBody HabitRequestDto request) {
+                                                            @Valid @RequestBody HabitRequestDto request) {
         HabitResponseDto response = habitService.updateHabit(habitId, request);
 
         return ResponseEntity.ok(response);
