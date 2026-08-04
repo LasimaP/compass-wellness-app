@@ -1,5 +1,5 @@
 import React from "react";
-import Circle from "./Circle";
+import Circle from "../../../components/Circle";
 import { motion } from "motion/react";
 
 const VineTimeline = () => {
