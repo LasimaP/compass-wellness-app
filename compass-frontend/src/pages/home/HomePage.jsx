@@ -6,6 +6,7 @@ import FeatureBeds from "./components/FeatureBeds";
 import StreakTimeline from "./components/StreakTimeline";
 import Philosophy from "./components/Philosophy";
 import CtaBand from "./components/CtaBand";
+import Leaf from "../../components/Leaf";
 
 const HomePage = () => {
   return (
@@ -17,6 +18,8 @@ const HomePage = () => {
         <StreakTimeline />
         <Philosophy />
         <CtaBand />
+        <Leaf size="40px" state="filled" />
+        <Leaf size="40px" state="hollow" />
       </div>
     </>
   );
