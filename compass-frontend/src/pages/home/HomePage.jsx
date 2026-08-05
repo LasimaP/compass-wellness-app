@@ -18,8 +18,6 @@ const HomePage = () => {
         <StreakTimeline />
         <Philosophy />
         <CtaBand />
-        <Leaf size="40px" state="filled" />
-        <Leaf size="40px" state="hollow" />
       </div>
     </>
   );

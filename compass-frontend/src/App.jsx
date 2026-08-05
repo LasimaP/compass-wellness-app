@@ -5,6 +5,7 @@ import HabitComponent from "./components/HabitComponent";
 import HeaderComponent from "./components/HeaderComponent";
 import FooterComponent from "./components/FooterComponent";
 import HomePage from "./pages/home/HomePage";
+import HabitsPage from "./pages/habit/HabitsPage";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
-            <Route path="/habits" element={<ListHabitComponent />}></Route>
+            <Route path="/habits" element={<HabitsPage />}></Route>
             <Route path="/add-habit" element={<HabitComponent />}></Route>
           </Routes>
           <FooterComponent />
