@@ -5,7 +5,6 @@ import HabitComponent from "./components/HabitComponent";
 import FooterComponent from "./components/FooterComponent";
 import HomePage from "./pages/home/HomePage";
 import HabitsPage from "./pages/habit/HabitsPage";
-import AppHeader from "./components/AppHeader";
 import DashboardLayout from "./pages/DashboardLayout";
 
 function App() {
