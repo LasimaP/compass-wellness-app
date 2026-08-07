@@ -7,18 +7,18 @@ import TodayBand from "./components/TodayBand";
 
 const HabitsPage = () => {
   const habits = [
-    { name: "Morning Pages", done: false },
-    { name: "Move for 20 min", done: false },
-    { name: "Read before bed", done: true },
-    { name: "No screens after 10", done: true },
+    { id: 1, name: "Morning Pages", done: false },
+    { id: 2, name: "Move for 20 min", done: false },
+    { id: 3, name: "Read before bed", done: true },
+    { id: 4, name: "No screens after 10", done: true },
   ];
   return (
     <div>
       <TodayBand habits={habits} />
       <Hero />
       <Philosophy />
-      <Leaf size="40px" state="filled" />
-      <Leaf size="40px" state="hollow" />
+      <Leaf size={40} state="filled" />
+      <Leaf size={40} state="hollow" />
     </div>
   );
 };
