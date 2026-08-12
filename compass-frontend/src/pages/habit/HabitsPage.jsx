@@ -6,6 +6,7 @@ import Philosophy from "../home/components/Philosophy";
 import TodayBand from "./components/TodayBand";
 import LeafCheck from "./components/LeafCheck";
 import MiniStreak from "./components/MiniStreak";
+import RowMenu from "./components/RowMenu";
 
 const HabitsPage = () => {
   const habits = [
@@ -45,6 +46,7 @@ const HabitsPage = () => {
       <TodayBand habits={habits} />
       <LeafCheck done={done} onToggle={onToggle} name="Brush Teeth" />
       <MiniStreak recent={habits[1].recentStreak} />
+      <RowMenu />
       <Hero />
       <Philosophy />
       <Leaf size={40} state="filled" />
