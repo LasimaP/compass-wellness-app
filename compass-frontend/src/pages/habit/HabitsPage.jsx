@@ -7,50 +7,61 @@ import TodayBand from "./components/TodayBand";
 import LeafCheck from "./components/LeafCheck";
 import MiniStreak from "./components/MiniStreak";
 import RowMenu from "./components/RowMenu";
+import HabitRow from "./components/HabitRow";
 
 const HabitsPage = () => {
-  const habits = [
+  const [habits, setHabits] = useState([
     {
       id: 1,
       name: "Morning Pages",
       done: false,
-      recentStreak: [true, true, true, true, false, true, true],
+      recent: [true, true, true, true, false, true, true],
+      streak: 11,
+      cadence: "Daily",
     },
     {
       id: 2,
       name: "Move for 20 min",
       done: false,
-      recentStreak: [true, false, true, true, true, false, true],
+      recent: [true, false, true, true, true, false, true],
+      streak: 4,
+      cadence: "Daily",
     },
     {
       id: 3,
       name: "Read before bed",
       done: true,
-      recentStreak: [true, true, true, true, true, true, true],
+      recent: [true, true, true, true, true, true, true],
+      streak: 30,
+      cadence: "Daily",
     },
     {
       id: 4,
       name: "No screens after 10",
       done: true,
-      recentStreak: [false, true, false, true, true, false, false],
+      recent: [false, true, false, true, true, false, false],
+      streak: 2,
+      cadence: "Mon-Fri",
     },
-  ];
+  ]);
 
-  const [done, setDone] = useState(false);
-
-  const onToggle = () => {
-    setDone(!done);
+  const onToggle = (habitId) => {
+    setHabits((prevHabits) =>
+      prevHabits.map((habit) => {
+        if (habit.id === habitId) {
+          return { ...habit, done: !habit.done };
+        }
+        return habit;
+      }),
+    );
   };
+
   return (
     <div className="max-w-[860px] mx-auto">
       <TodayBand habits={habits} />
-      <LeafCheck done={done} onToggle={onToggle} name="Brush Teeth" />
-      <MiniStreak recent={habits[1].recentStreak} />
-      <RowMenu />
+      <HabitRow habit={habits[1]} onToggle={() => onToggle(habits[1].id)} />
       <Hero />
       <Philosophy />
-      <Leaf size={40} state="filled" />
-      <Leaf size={40} state="hollow" />
     </div>
   );
 };
