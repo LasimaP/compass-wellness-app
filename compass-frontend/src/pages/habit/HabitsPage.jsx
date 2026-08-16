@@ -8,6 +8,7 @@ import LeafCheck from "./components/LeafCheck";
 import MiniStreak from "./components/MiniStreak";
 import RowMenu from "./components/RowMenu";
 import HabitRow from "./components/HabitRow";
+import HabitList from "./components/HabitList";
 
 const HabitsPage = () => {
   const [habits, setHabits] = useState([
@@ -49,6 +50,7 @@ const HabitsPage = () => {
     setHabits((prevHabits) =>
       prevHabits.map((habit) => {
         if (habit.id === habitId) {
+          console.log(habit.id + " toggled");
           return { ...habit, done: !habit.done };
         }
         return habit;
@@ -59,7 +61,7 @@ const HabitsPage = () => {
   return (
     <div className="max-w-[860px] mx-auto">
       <TodayBand habits={habits} />
-      <HabitRow habit={habits[1]} onToggle={() => onToggle(habits[1].id)} />
+      <HabitList habits={habits} onToggle={onToggle} />
       <Hero />
       <Philosophy />
     </div>

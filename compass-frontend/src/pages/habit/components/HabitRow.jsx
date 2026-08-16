@@ -9,7 +9,11 @@ const HabitRow = ({ habit, onToggle, onEdit, onArchive, onDelete }) => {
       className={`group relative z-20 w-full flex justify-between items-center px-4 py-4 transition-colors duration-300 ${habit.done ? "bg-sage/15 hover:bg-sage/30" : "bg-parchment hover:bg-linen/80"}`}
     >
       <div className="flex gap-4">
-        <LeafCheck done={habit.done} onToggle={onToggle} name={habit.name} />
+        <LeafCheck
+          done={habit.done}
+          onToggle={() => onToggle(habit.id)}
+          name={habit.name}
+        />
         <div className="flex flex-col items-start">
           <h3 className="font-body font-semibold text-base text-bark">
             {habit.name}
@@ -27,7 +31,7 @@ const HabitRow = ({ habit, onToggle, onEdit, onArchive, onDelete }) => {
           >
             {habit.streak}
           </p>
-          <p className="font-body text-xs text-bark/80 uppercase leading-tight tracking-widest">
+          <p className="font-body text-xs text-moss/80 uppercase leading-tight tracking-widest">
             {habit.streak === 1 ? "Day" : "Days"}
           </p>
         </div>
