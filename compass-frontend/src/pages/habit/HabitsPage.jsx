@@ -9,6 +9,7 @@ import MiniStreak from "./components/MiniStreak";
 import RowMenu from "./components/RowMenu";
 import HabitRow from "./components/HabitRow";
 import HabitList from "./components/HabitList";
+import RestingSection from "./components/RestingSection";
 
 const HabitsPage = () => {
   const [habits, setHabits] = useState([
@@ -19,6 +20,7 @@ const HabitsPage = () => {
       recent: [true, true, true, true, false, true, true],
       streak: 11,
       cadence: "Daily",
+      activeToday: true,
     },
     {
       id: 2,
@@ -27,6 +29,7 @@ const HabitsPage = () => {
       recent: [true, false, true, true, true, false, true],
       streak: 4,
       cadence: "Daily",
+      activeToday: true,
     },
     {
       id: 3,
@@ -35,6 +38,7 @@ const HabitsPage = () => {
       recent: [true, true, true, true, true, true, true],
       streak: 30,
       cadence: "Daily",
+      activeToday: true,
     },
     {
       id: 4,
@@ -43,6 +47,26 @@ const HabitsPage = () => {
       recent: [false, true, false, true, true, false, false],
       streak: 2,
       cadence: "Mon-Fri",
+      activeToday: true,
+    },
+
+    {
+      id: 5,
+      name: "Long Run",
+      done: false,
+      recent: [true, true, true, false, true, false, false],
+      streak: 3,
+      cadence: "Saturdays",
+      activeToday: false,
+    },
+    {
+      id: 6,
+      name: "Call Mom",
+      done: false,
+      recent: [true, true, true, false, true, false, false],
+      streak: 3,
+      cadence: "Sundays",
+      activeToday: false,
     },
   ]);
 
@@ -62,6 +86,7 @@ const HabitsPage = () => {
     <div className="max-w-[860px] mx-auto">
       <TodayBand habits={habits} />
       <HabitList habits={habits} onToggle={onToggle} />
+      <RestingSection habits={habits} />
       <Hero />
       <Philosophy />
     </div>
