@@ -14,7 +14,7 @@ const TodayBand = ({ habits }) => {
   const remaining = count - completed;
 
   return (
-    <div className="max-w-[860px] mx-auto pt-11 pb-6">
+    <div className="pt-11 pb-6">
       <div className="flex flex-col gap-3">
         <p className="font-mono text-bark/80 text-xs uppercase tracking-widest">
           {weekday} · {monthAndDay}

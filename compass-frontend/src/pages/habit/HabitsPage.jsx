@@ -1,31 +1,8 @@
 import React, { useState } from "react";
-import AppHeader from "../../components/AppHeader";
-import Hero from "../home/components/Hero";
-import Leaf from "../../components/Leaf";
-import Philosophy from "../home/components/Philosophy";
 import TodayBand from "./components/TodayBand";
-import LeafCheck from "./components/LeafCheck";
-import MiniStreak from "./components/MiniStreak";
-import RowMenu from "./components/RowMenu";
-import HabitRow from "./components/HabitRow";
 import HabitList from "./components/HabitList";
 import RestingSection from "./components/RestingSection";
-import FooterComponent from "../../components/FooterComponent";
-
-export const Frequency = {
-  DAILY: "DAILY",
-  SPECIFIC_DAYS: "SPECIFIC_DAYS",
-};
-
-export const DayOfWeek = {
-  MONDAY: "MONDAY",
-  TUESDAY: "TUESDAY",
-  WEDNESDAY: "WEDNESDAY",
-  THURSDAY: "THURSDAY",
-  FRIDAY: "FRIDAY",
-  SATURDAY: "SATURDAY",
-  SUNDAY: "SUNDAY",
-};
+import { DayOfWeek, Frequency } from "./constants/cadence";
 
 const HabitsPage = () => {
   const [habits, setHabits] = useState([
@@ -133,10 +110,33 @@ const HabitsPage = () => {
     );
   };
 
+  const handleEdit = (habitId) => {
+    console.log(`habit ${habitId} edited...`);
+  };
+
+  const handleArchive = (habitId) => {
+    console.log(`habit ${habitId} archived...`);
+  };
+
+  const handleDelete = (habitId) => {
+    console.log(`habit ${habitId} deleted...`);
+  };
+
+  const handleAdd = () => {
+    console.log("open create-habit dialog...");
+  };
+
   return (
-    <div className="max-w-[860px] mx-auto">
+    <div className="max-w-[908px] mx-auto px-6">
       <TodayBand habits={activeHabits} />
-      <HabitList habits={activeHabits} onToggle={handleToggle} />
+      <HabitList
+        habits={activeHabits}
+        onToggle={handleToggle}
+        onEdit={handleEdit}
+        onArchive={handleArchive}
+        onDelete={handleDelete}
+        onAdd={handleAdd}
+      />
       <RestingSection habits={restingHabits} />
     </div>
   );

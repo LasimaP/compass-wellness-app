@@ -1,0 +1,14 @@
+export const Frequency = {
+  DAILY: "DAILY",
+  SPECIFIC_DAYS: "SPECIFIC_DAYS",
+};
+
+export const DayOfWeek = {
+  MONDAY: "MONDAY",
+  TUESDAY: "TUESDAY",
+  WEDNESDAY: "WEDNESDAY",
+  THURSDAY: "THURSDAY",
+  FRIDAY: "FRIDAY",
+  SATURDAY: "SATURDAY",
+  SUNDAY: "SUNDAY",
+};
