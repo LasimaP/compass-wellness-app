@@ -2,7 +2,14 @@ import React from "react";
 import HabitRow from "./HabitRow";
 import AddHabitRow from "./AddHabitRow";
 
-const HabitList = ({ habits, onToggle, onEdit, onArchive, onDelete }) => {
+const HabitList = ({
+  habits,
+  onToggle,
+  onEdit,
+  onArchive,
+  onDelete,
+  onAdd,
+}) => {
   return (
     <div className="flex flex-col gap-px bg-bark/10 border border-bark/10 rounded-2xl overflow-hidden mb-6">
       {habits.map((habit) => (
@@ -15,7 +22,7 @@ const HabitList = ({ habits, onToggle, onEdit, onArchive, onDelete }) => {
           onDelete={onDelete}
         />
       ))}
-      <AddHabitRow />
+      <AddHabitRow onAdd={onAdd} />
     </div>
   );
 };
