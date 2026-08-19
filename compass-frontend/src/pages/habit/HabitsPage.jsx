@@ -12,6 +12,21 @@ import HabitList from "./components/HabitList";
 import RestingSection from "./components/RestingSection";
 import FooterComponent from "../../components/FooterComponent";
 
+export const Frequency = {
+  DAILY: "DAILY",
+  SPECIFIC_DAYS: "SPECIFIC_DAYS",
+};
+
+export const DayOfWeek = {
+  MONDAY: "MONDAY",
+  TUESDAY: "TUESDAY",
+  WEDNESDAY: "WEDNESDAY",
+  THURSDAY: "THURSDAY",
+  FRIDAY: "FRIDAY",
+  SATURDAY: "SATURDAY",
+  SUNDAY: "SUNDAY",
+};
+
 const HabitsPage = () => {
   const [habits, setHabits] = useState([
     {
@@ -21,7 +36,8 @@ const HabitsPage = () => {
       recent: [true, true, true, true, false, true, true],
       streak: 11,
       cadence: "Daily",
-      activeToday: true,
+      frequency: Frequency.DAILY,
+      activeDays: [],
     },
     {
       id: 2,
@@ -30,7 +46,8 @@ const HabitsPage = () => {
       recent: [true, false, true, true, true, false, true],
       streak: 4,
       cadence: "Daily",
-      activeToday: true,
+      frequency: Frequency.DAILY,
+      activeDays: [],
     },
     {
       id: 3,
@@ -39,7 +56,8 @@ const HabitsPage = () => {
       recent: [true, true, true, true, true, true, true],
       streak: 30,
       cadence: "Daily",
-      activeToday: true,
+      frequency: Frequency.DAILY,
+      activeDays: [],
     },
     {
       id: 4,
@@ -48,7 +66,14 @@ const HabitsPage = () => {
       recent: [false, true, false, true, true, false, false],
       streak: 2,
       cadence: "Mon-Fri",
-      activeToday: true,
+      frequency: Frequency.SPECIFIC_DAYS,
+      activeDays: [
+        DayOfWeek.MONDAY,
+        DayOfWeek.TUESDAY,
+        DayOfWeek.WEDNESDAY,
+        DayOfWeek.THURSDAY,
+        DayOfWeek.FRIDAY,
+      ],
     },
 
     {
@@ -58,7 +83,8 @@ const HabitsPage = () => {
       recent: [true, true, true, false, true, false, false],
       streak: 3,
       cadence: "Saturdays",
-      activeToday: false,
+      frequency: Frequency.SPECIFIC_DAYS,
+      activeDays: [DayOfWeek.SATURDAY],
     },
     {
       id: 6,
@@ -67,7 +93,8 @@ const HabitsPage = () => {
       recent: [true, true, true, false, true, false, false],
       streak: 3,
       cadence: "Sundays",
-      activeToday: false,
+      frequency: Frequency.SPECIFIC_DAYS,
+      activeDays: [DayOfWeek.SUNDAY],
     },
     {
       id: 7,
@@ -76,19 +103,29 @@ const HabitsPage = () => {
       recent: [true, true, true, false, true, false, false],
       streak: 3,
       cadence: "Sundays",
-      activeToday: false,
+      frequency: Frequency.SPECIFIC_DAYS,
+      activeDays: [DayOfWeek.SUNDAY],
     },
   ]);
 
-  const activeHabits = habits.filter((habit) => habit.activeToday);
+  const isActiveToday = (habit) => {
+    if (habit.frequency === Frequency.DAILY) return true;
+    const today = new Date()
+      .toLocaleDateString("en-US", { weekday: "long" })
+      .toUpperCase();
 
-  const restingHabits = habits.filter((habit) => !habit.activeToday);
+    return habit.activeDays.includes(today);
+  };
 
-  const onToggle = (habitId) => {
+  const activeHabits = habits.filter((habit) => isActiveToday(habit));
+
+  const restingHabits = habits.filter((habit) => !isActiveToday(habit));
+
+  const handleToggle = (habitId) => {
     setHabits((prevHabits) =>
       prevHabits.map((habit) => {
         if (habit.id === habitId) {
-          console.log(habit.id + " toggled");
+          // console.log(habit.id + " toggled");
           return { ...habit, done: !habit.done };
         }
         return habit;
@@ -99,7 +136,7 @@ const HabitsPage = () => {
   return (
     <div className="max-w-[860px] mx-auto">
       <TodayBand habits={activeHabits} />
-      <HabitList habits={activeHabits} onToggle={onToggle} />
+      <HabitList habits={activeHabits} onToggle={handleToggle} />
       <RestingSection habits={restingHabits} />
     </div>
   );
