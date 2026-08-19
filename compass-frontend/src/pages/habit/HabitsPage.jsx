@@ -10,6 +10,7 @@ import RowMenu from "./components/RowMenu";
 import HabitRow from "./components/HabitRow";
 import HabitList from "./components/HabitList";
 import RestingSection from "./components/RestingSection";
+import FooterComponent from "../../components/FooterComponent";
 
 const HabitsPage = () => {
   const [habits, setHabits] = useState([
@@ -68,7 +69,20 @@ const HabitsPage = () => {
       cadence: "Sundays",
       activeToday: false,
     },
+    {
+      id: 7,
+      name: "Bike Ride",
+      done: false,
+      recent: [true, true, true, false, true, false, false],
+      streak: 3,
+      cadence: "Sundays",
+      activeToday: false,
+    },
   ]);
+
+  const activeHabits = habits.filter((habit) => habit.activeToday);
+
+  const restingHabits = habits.filter((habit) => !habit.activeToday);
 
   const onToggle = (habitId) => {
     setHabits((prevHabits) =>
@@ -84,11 +98,9 @@ const HabitsPage = () => {
 
   return (
     <div className="max-w-[860px] mx-auto">
-      <TodayBand habits={habits} />
-      <HabitList habits={habits} onToggle={onToggle} />
-      <RestingSection habits={habits} />
-      <Hero />
-      <Philosophy />
+      <TodayBand habits={activeHabits} />
+      <HabitList habits={activeHabits} onToggle={onToggle} />
+      <RestingSection habits={restingHabits} />
     </div>
   );
 };

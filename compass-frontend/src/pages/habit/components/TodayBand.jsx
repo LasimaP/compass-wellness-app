@@ -9,10 +9,8 @@ const TodayBand = ({ habits }) => {
     day: "numeric",
   });
 
-  const count = habits.filter((habit) => habit.activeToday).length;
-  const completed = habits.filter(
-    (habit) => habit.done && habit.activeToday,
-  ).length;
+  const count = habits.length;
+  const completed = habits.filter((habit) => habit.done).length;
   const remaining = count - completed;
 
   return (

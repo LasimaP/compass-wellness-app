@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   return (
-    <div className="bg-parchment">
+    <div className="min-h-[100vh] bg-parchment">
       <AppHeader />
       <Outlet />
     </div>
