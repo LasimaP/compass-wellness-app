@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import TodayBand from "./components/TodayBand";
 import HabitList from "./components/HabitList";
 import RestingSection from "./components/RestingSection";
 import { DayOfWeek, Frequency } from "./constants/cadence";
+import HabitFormDialog from "./components/HabitFormDialog";
 
 const HabitsPage = () => {
   const [habits, setHabits] = useState([
@@ -85,6 +86,9 @@ const HabitsPage = () => {
     },
   ]);
 
+  const [editingHabit, setEditingHabit] = useState(null);
+  const [isDialogOpen, setDialogOpen] = useState(false);
+
   const isActiveToday = (habit) => {
     if (habit.frequency === Frequency.DAILY) return true;
     const today = new Date()
@@ -111,7 +115,8 @@ const HabitsPage = () => {
   };
 
   const handleEdit = (habitId) => {
-    console.log(`habit ${habitId} edited...`);
+    setEditingHabit(habits.find((habit) => habit.id === habitId));
+    setDialogOpen(true);
   };
 
   const handleArchive = (habitId) => {
@@ -123,7 +128,13 @@ const HabitsPage = () => {
   };
 
   const handleAdd = () => {
-    console.log("open create-habit dialog...");
+    setEditingHabit(null);
+    setDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setDialogOpen(false);
+    console.log(isDialogOpen);
   };
 
   return (
@@ -138,6 +149,11 @@ const HabitsPage = () => {
         onAdd={handleAdd}
       />
       <RestingSection habits={restingHabits} />
+      <HabitFormDialog
+        habit={editingHabit}
+        isOpen={isDialogOpen}
+        onClose={handleCloseDialog}
+      />
     </div>
   );
 };
