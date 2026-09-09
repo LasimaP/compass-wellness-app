@@ -10,6 +10,7 @@ const HabitsPage = () => {
     {
       id: 1,
       name: "Morning Pages",
+      description: "",
       done: false,
       recent: [true, true, true, true, false, true, true],
       streak: 11,
@@ -20,6 +21,7 @@ const HabitsPage = () => {
     {
       id: 2,
       name: "Move for 20 min",
+      description: "",
       done: false,
       recent: [true, false, true, true, true, false, true],
       streak: 4,
@@ -30,6 +32,7 @@ const HabitsPage = () => {
     {
       id: 3,
       name: "Read before bed",
+      description: "At least 10 pages every night before bed",
       done: true,
       recent: [true, true, true, true, true, true, true],
       streak: 30,
@@ -40,6 +43,7 @@ const HabitsPage = () => {
     {
       id: 4,
       name: "No screens after 10",
+      description: "Phone goes on shelf, not the nightstand.",
       done: true,
       recent: [false, true, false, true, true, false, false],
       streak: 2,
@@ -57,6 +61,7 @@ const HabitsPage = () => {
     {
       id: 5,
       name: "Long Run",
+      description: "3 mile minimum",
       done: false,
       recent: [true, true, true, false, true, false, false],
       streak: 3,
@@ -67,6 +72,7 @@ const HabitsPage = () => {
     {
       id: 6,
       name: "Call Mom",
+      description: "",
       done: false,
       recent: [true, true, true, false, true, false, false],
       streak: 3,
@@ -77,6 +83,7 @@ const HabitsPage = () => {
     {
       id: 7,
       name: "Bike Ride",
+      description: "",
       done: false,
       recent: [true, true, true, false, true, false, false],
       streak: 3,
@@ -150,6 +157,7 @@ const HabitsPage = () => {
       />
       <RestingSection habits={restingHabits} />
       <HabitFormDialog
+        key={editingHabit?.id ?? "new"}
         habit={editingHabit}
         isOpen={isDialogOpen}
         onClose={handleCloseDialog}
